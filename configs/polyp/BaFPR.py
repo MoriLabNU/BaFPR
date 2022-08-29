@@ -28,8 +28,8 @@ data = dict(
         ))
 
 # experimental
-save_to = './exp/' # None for not recording the exp
-exp_name = 'BaFPR_polyp_debug'
+save_to = None#'./exp/' # None for not recording the exp
+exp_name = 'BaFPR_polyp_debug_mgpu'
 seed = 0
 
 #dist_params = dict(backend='nccl')

@@ -112,9 +112,17 @@ class Trainer():
             self.sub_model = None
         if self.main_process() and self.logger is not None:
             self.logger.info(f'Built new model')
-        self.model.cuda()
+        if dist.get_world_size() > 1:
+            self.model = torch.nn.parallel.DistributedDataParallel(self.model.cuda(),  find_unused_parameters=True)
+
+        else:
+            self.model.cuda()
         if self.sub_model is not None:
-            self.sub_model.cuda()
+            if dist.get_world_size() > 1:
+                self.sub_model =  torch.nn.parallel.DistributedDataParallel(self.sub_model.cuda(),  find_unused_parameters=True)
+            else:
+                self.sub_model.cuda()
+
 
 
     

@@ -99,7 +99,7 @@ class BuildDataloader:
             if dist.get_world_size() > 1:
                 print(f'world size {dist.get_world_size()}')
                 train_labeled_sampler = torch.utils.data.distributed.DistributedSampler(self.train_labeled_dataset)
-                train_unlabeled_sampler = torch.utils.data.distributed.DistributedSampler(self.train_unlabel_dataset)
+                #train_unlabeled_sampler = torch.utils.data.distributed.DistributedSampler(self.train_unlabel_dataset)
                 test_sampler_0 = torch.utils.data.distributed.DistributedSampler(self.test_dataset_0)
                 test_sampler_1 = torch.utils.data.distributed.DistributedSampler(self.test_dataset_1)
                 test_sampler_2 = torch.utils.data.distributed.DistributedSampler(self.test_dataset_2)
